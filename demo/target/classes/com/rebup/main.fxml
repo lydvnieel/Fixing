@@ -33,7 +33,7 @@
     </top>
 
     <center>
-        <VBox spacing="15" padding="20 20 20 20">
+        <VBox spacing="15" padding="20,20,20,20">
             <HBox spacing="10" alignment="CENTER_RIGHT">
                 <TextField fx:id="txtBuscar" promptText="Buscar..." prefWidth="300" />
                 <ComboBox fx:id="comboFiltro" prefWidth="150" promptText="Filtrar" />
