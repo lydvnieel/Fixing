@@ -5,12 +5,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<BorderPane xmlns="http://javafx.com/javafx/18"
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.rebup.MainController">
 
     <left>
-        <VBox style="-fx-background-color: #022E5D;" spacing="40" alignment="TOP_CENTER" prefWidth="180" padding="20 20 20 20">
+        <VBox style="-fx-background-color: #022E5D;" spacing="40" alignment="TOP_CENTER" prefWidth="180">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
             <HBox spacing="10" alignment="CENTER_LEFT">
                 <Label text="REBUP" style="-fx-text-fill: white; -fx-font-size: 24;" />
             </HBox>
@@ -27,13 +31,20 @@
     </left>
 
     <top>
-        <HBox style="-fx-background-color: #00907A;" alignment="CENTER" prefHeight="60" spacing="20" padding="0 30 0 30">
+        <HBox style="-fx-background-color: #00907A;" alignment="CENTER" prefHeight="60" spacing="20">
+            <padding>
+                <Insets top="0" right="30" bottom="0" left="30"/>
+            </padding>
             <Label text="PRESTAMOS" style="-fx-text-fill: white; -fx-font-size: 22; -fx-font-weight: bold;" />
         </HBox>
     </top>
 
     <center>
-        <VBox spacing="15" padding="20,20,20,20">
+        <VBox spacing="15">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
             <HBox spacing="10" alignment="CENTER_RIGHT">
                 <TextField fx:id="txtBuscar" promptText="Buscar..." prefWidth="300" />
                 <ComboBox fx:id="comboFiltro" prefWidth="150" promptText="Filtrar" />
