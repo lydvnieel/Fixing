@@ -22,7 +22,7 @@ public class MainController {
 
     @FXML
     public void initialize() {
-        comboFiltro.getItems().addAll("Todos", "Switch", "Router", "Adaptador", "Proyector", "Camara", "Laptop");
+        comboFiltro.getItems().addAll("Todos", "switch", "router", "adaptador", "proyector", "camara", "laptop");
         comboFiltro.setValue("Todos");
         comboFiltro.setOnAction(e -> mostrarEquipos(comboFiltro.getValue()));
         mostrarEquipos("Todos");
@@ -31,7 +31,7 @@ public class MainController {
     private void mostrarEquipos(String filtro) {
         gridEquipos.getChildren().clear();
 
-        List<String> tipos = List.of("Switch", "Router", "Adaptador", "Proyector", "Camara", "Laptop");
+        List<String> tipos = List.of("switch", "router", "adaptador", "proyector", "camara", "laptop");
 
         int columna = 0, fila = 0;
 
