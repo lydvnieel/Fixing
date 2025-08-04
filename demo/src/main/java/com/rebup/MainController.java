@@ -34,10 +34,20 @@ public class MainController {
     @FXML
     private TextField txtBuscar;
 
+    @FXML
+    private ImageView logo;
+
     private boolean haySeleccion = false;
 
     @FXML
     public void initialize() {
+        try {
+            Image img = new Image(getClass().getResourceAsStream("/com/rebup/images/rebup.png"));
+            logo.setImage(img);
+        } catch (Exception e) {
+            System.out.println("No se pudo cargar la imagen rebup.png");
+        }
+
         comboFiltro.getItems().addAll("Todos", "Disponible", "No disponible");
         comboFiltro.setValue("Todos");
         comboFiltro.setOnAction(e -> mostrarEquipos(comboFiltro.getValue()));
@@ -70,18 +80,10 @@ public class MainController {
             contenedor.setAlignment(Pos.CENTER);
 
             String rutaImagen = "/com/rebup/images/" + tipo.toLowerCase() + ".png";
-            Image imagen = null;
+            Image imagen;
             try {
-                if (getClass().getResourceAsStream(rutaImagen) != null) {
-                    imagen = new Image(getClass().getResourceAsStream(rutaImagen));
-                } else if (getClass().getResource(rutaImagen) != null) {
-                    imagen = new Image(getClass().getResource(rutaImagen).toExternalForm());
-                } else {
-                    continue;
-                }
-
+                imagen = new Image(getClass().getResourceAsStream(rutaImagen));
                 if (imagen.isError()) continue;
-
             } catch (Exception e) {
                 continue;
             }
@@ -90,20 +92,10 @@ public class MainController {
             imageView.setFitWidth(120);
             imageView.setFitHeight(120);
             imageView.setCursor(Cursor.HAND);
+            imageView.setOnMouseClicked(e -> mostrarConfirmacion(tipo));
 
             StackPane stack = new StackPane(imageView);
             stack.setAlignment(Pos.TOP_RIGHT);
-
-            Button botonAgregar = new Button("+");
-            botonAgregar.setStyle(
-                "-fx-background-color: #00907A; -fx-text-fill: white; " +
-                "-fx-font-size: 12px; -fx-background-radius: 50%; " +
-                "-fx-min-width: 22px; -fx-min-height: 22px;"
-            );
-            StackPane.setMargin(botonAgregar, new Insets(5, 5, 0, 0));
-            botonAgregar.setOnAction(e -> mostrarConfirmacion(tipo));
-
-            stack.getChildren().add(botonAgregar);
 
             String textoBoton = tipo.substring(0, 1).toUpperCase() + tipo.substring(1).toLowerCase();
             Button botonObjeto = new Button(textoBoton);
@@ -114,8 +106,6 @@ public class MainController {
             );
             botonObjeto.setOnAction(e -> mostrarConfirmacion(tipo));
 
-            imageView.setOnMouseClicked(e -> seleccionarEquipo());
-
             contenedor.getChildren().addAll(stack, botonObjeto);
             gridEquipos.add(contenedor, columna, fila);
 
@@ -125,11 +115,6 @@ public class MainController {
                 fila++;
             }
         }
-    }
-
-    private void seleccionarEquipo() {
-        haySeleccion = true;
-        btnConfirmar.setDisable(false);
     }
 
     private void mostrarConfirmacion(String tipo) {
@@ -144,20 +129,19 @@ public class MainController {
         btnSi.setPrefSize(296, 73);
         btnSi.setStyle(
             "-fx-background-color: #4A6FDB; -fx-text-fill: white; " +
-            "-fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 15;"
+            "-fx-font-size: 18px; -fx-font-weight: bold;"
         );
         btnSi.setOnAction(e -> {
             haySeleccion = true;
             btnConfirmar.setDisable(false);
             alerta.close();
-            mostrarAlerta();
         });
 
         Button btnNo = new Button("Cancelar");
         btnNo.setPrefSize(296, 73);
         btnNo.setStyle(
             "-fx-background-color: #DC3030; -fx-text-fill: white; " +
-            "-fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 15;"
+            "-fx-font-size: 18px; -fx-font-weight: bold;"
         );
         btnNo.setOnAction(e -> alerta.close());
 
@@ -185,16 +169,15 @@ public class MainController {
         Button btnContinuar = new Button("Continuar");
         btnContinuar.setStyle(
             "-fx-background-color: white; -fx-text-fill: black; " +
-            "-fx-font-size: 18px; -fx-background-radius: 25; " +
-            "-fx-border-color: black; -fx-border-radius: 25; " +
+            "-fx-font-size: 18px; -fx-border-color: black; " +
             "-fx-padding: 10 40;"
         );
         btnContinuar.setOnAction(e -> alerta.close());
 
-        VBox layout = new VBox(40, mensaje, btnContinuar);
+        VBox layout = new VBox(100, mensaje, btnContinuar);
         layout.setAlignment(Pos.CENTER);
         layout.setPadding(new Insets(40));
-        layout.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20;");
+        layout.setStyle("-fx-background-color: white;");
 
         Scene scene = new Scene(layout, 737, 521);
         alerta.setScene(scene);
