@@ -10,37 +10,41 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.rebup.MainController">
 
-    <left>
-        <VBox style="-fx-background-color: #022E5D;" spacing="40" alignment="TOP_CENTER" prefWidth="180">
-            <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
-            </padding>
-            <HBox spacing="10" alignment="CENTER_LEFT">
-                <Label text="REBUP" style="-fx-text-fill: white; -fx-font-size: 24;" />
-            </HBox>
-            <VBox spacing="20" prefWidth="160">
-                <Button text="  Prestamos"
-                        style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16;"
-                        alignment="CENTER_LEFT" />
-                <Button text="  Devoluciones"
-                        style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16;"
-                        alignment="CENTER_LEFT" />
-            </VBox>
-        </VBox>
-    </left>
+ <left>
+    <VBox style="-fx-background-color: #022E5D;" spacing="40" alignment="TOP_LEFT" prefWidth="180">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
 
-    <top>
-        <HBox style="-fx-background-color: #00907A;" alignment="CENTER_LEFT" prefHeight="60" spacing="0">
-            <ImageView fitHeight="55" fitWidth="55" preserveRatio="true" pickOnBounds="true" style="-fx-padding: 0 20 0 20;">
-                <image>
-                    <Image url="@com/rebup/images/rebup.png" />
-                </image>
-            </ImageView>
-            <Region HBox.hgrow="ALWAYS" />
-            <Label text="PRESTAMOS" style="-fx-text-fill: white; -fx-font-size: 22; -fx-font-weight: bold;" />
-            <Region HBox.hgrow="ALWAYS" />
-        </HBox>
-    </top>
+        <Label text="REBUP" style="-fx-text-fill: white; -fx-font-size: 24; -fx-padding: 0 0 0 10;" />
+
+        <VBox spacing="20" prefWidth="160">
+            <Button text="Prestamos"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16; -fx-padding: 0 0 0 10;"
+                    alignment="CENTER_LEFT" />
+            <Button text="Devoluciones"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16; -fx-padding: 0 0 0 10;"
+                    alignment="CENTER_LEFT" />
+        </VBox>
+    </VBox>
+</left>
+
+
+
+  <top>
+    <HBox style="-fx-background-color: #00907A;" alignment="CENTER_LEFT" prefHeight="60" spacing="10" padding="0 30 0 30">
+        <ImageView fitHeight="50" fitWidth="50" preserveRatio="true" pickOnBounds="true">
+            <image>
+                <Image url="@/com/rebup/images/rebup.png" />
+            </image>
+        </ImageView>
+        <Region HBox.hgrow="ALWAYS" />
+        <Label text="PRESTAMOS" style="-fx-text-fill: white; -fx-font-size: 22; -fx-font-weight: bold;" />
+        <Region HBox.hgrow="ALWAYS" />
+    </HBox>
+</top>
+
+
 
     <center>
         <VBox spacing="15" alignment="TOP_CENTER">
